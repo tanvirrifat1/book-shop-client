@@ -35,7 +35,7 @@ interface Icredential {
 
 export const createUser = createAsyncThunk(
   "user/createUser",
-  async ({  email, password }: Icredential) => {
+  async ({ email, password }: Icredential) => {
     const data = await createUserWithEmailAndPassword(auth, email, password);
     return data.user.email;
   }
@@ -45,7 +45,6 @@ export const loginUser = createAsyncThunk(
   async ({ email, password }: Icredential) => {
     const data = await signInWithEmailAndPassword(auth, email, password);
     return data.user.email;
-    // return {email,password}
   }
 );
 
@@ -56,10 +55,10 @@ const userSlice = createSlice({
     logout: (state) => {
       state.user = initialState.user;
     },
-    setUser:(state,{payload})=>{
-        state.user = payload
-        state.isLoading =false
-    }
+    setUser: (state, { payload }) => {
+      state.user = payload;
+      state.isLoading = false;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -96,6 +95,6 @@ const userSlice = createSlice({
   },
 });
 
-export const  {logout,setUser} = userSlice.actions
+export const { logout, setUser } = userSlice.actions;
 
 export default userSlice.reducer;

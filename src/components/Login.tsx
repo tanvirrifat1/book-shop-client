@@ -1,8 +1,10 @@
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
-import { useAppDispatch } from "../redux/hooks";
+import { Link, useNavigate } from "react-router-dom";
+import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { loginUser } from "../redux/features/users/userSLice";
 import { toast } from "react-toastify";
+import { useEffect } from "react";
+
 interface ILoginFormData {
   name: string;
   email: string;
@@ -10,8 +12,7 @@ interface ILoginFormData {
 }
 
 const Login = () => {
-
-  const dispatch = useAppDispatch()
+  const dispatch = useAppDispatch();
 
   const {
     register,
@@ -21,16 +22,34 @@ const Login = () => {
 
   const onSubmit = (data: ILoginFormData) => {
     console.log(data);
-    const {email,password} = data
-    dispatch(loginUser({email,password}))
-    toast("successFully Login")
+    const { email, password } = data;
+    dispatch(loginUser({ email, password }));
+    toast("Login successfully", {
+      position: "top-center",
+      autoClose: 500,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
   };
+  const { user, isLoading } = useAppSelector((state) => state.user);
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (user.email && !isLoading) {
+      navigate("/");
+    }
+  }, [user.email, isLoading]);
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <div className="w-full max-w-md">
-      <h3 className="text-center font-bold text-4xl  text-slate-400 my-2 font-serif">
-        Log In
+        <h3 className="text-center font-bold text-4xl  text-slate-400 my-2 font-serif">
+          Log In
         </h3>
         <form
           onSubmit={handleSubmit(onSubmit)}
@@ -115,14 +134,13 @@ const Login = () => {
                     passwordInput.type === "password" ? "text" : "password";
                 }}
               ></button>
-            
             </div>
             <h2 className="my-3 text-sm text-slate-600">
-            Are you new user ?{" "}
-            <Link className="font-mono " to="/signup">
-              sign up in please
-            </Link>
-          </h2>
+              Are you new user ?{" "}
+              <Link className="font-mono " to="/signup">
+                sign up in please
+              </Link>
+            </h2>
           </div>
 
           <div className="flex items-center justify-between">
