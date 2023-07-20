@@ -78,13 +78,13 @@ const Books = () => {
                   </Link>
                   <button
                     onClick={() => handleAddBook(book)}
-                    className="py-2 bg-green-300 rounded-sm my-2 px-1"
+                    className="py-2 bg-pink-600 rounded-lg my-2 px-1"
                   >
                     Add Wishlist
                   </button>
                   <button
                     onClick={() => handleAddReaded(book)}
-                    className="py-2 bg-blue-300 rounded-sm my-2 px-1 "
+                    className="py-2  bg-pink-600 rounded-lg my-2 px-1"
                   >
                     Add Readed
                   </button>

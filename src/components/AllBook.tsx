@@ -121,13 +121,13 @@ const ALlBook = () => {
                 <section className="mx-auto  grid grid-cols-1 lg:grid-cols-2 gap-3 text-sm font-medium">
                   <button
                     onClick={() => handleAddBook(book)}
-                    className="py-2 bg-green-300 rounded-sm my-2 px-1"
+                    className="py-2 bg-purple-400 text-white rounded-lg my-2 px-2"
                   >
                     Add Wishlist
                   </button>
                   <button
                     onClick={() => handleAddReaded(book)}
-                    className="py-2 bg-blue-300 rounded-sm my-2 px-1 "
+                    className="py-2 bg-blue-300 text-white rounded-lg my-2 px-2 "
                   >
                     Add Readed
                   </button>
