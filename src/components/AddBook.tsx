@@ -9,20 +9,15 @@ export interface IBook {
   genre: string;
   publicationDate: string;
   reviews: number;
-  user?:string | null
+  user?: string | null;
 }
 
 const AddBook = () => {
-
   const { user } = useAppSelector((state) => state?.user);
-  const dispatch = useAppDispatch()
-  // console.log("🚀 ~ file: AddBook.tsx:16 ~ AddBook ~ user:", user)
+  const dispatch = useAppDispatch();
+  const [addBook, { isLoading, isError, isSuccess }] = usePostBookMutation();
 
-  // const [postBook,{isLoading,isError,isSuccess,error}]= usePostBookMutation()
-
-  const [addBook,{isLoading,isError,isSuccess}] = usePostBookMutation()
-
-  console.log({isLoading:isLoading,isError,isSuccess:isSuccess});
+  console.log({ isLoading: isLoading, isError, isSuccess: isSuccess });
   const {
     register,
     handleSubmit,
@@ -31,37 +26,43 @@ const AddBook = () => {
   } = useForm<IBook>();
 
   const onSubmit = (data: IBook) => {
-    console.log(data)
-    if(user?.email){
-      data.user = user?.email
+    console.log(data);
+    if (user?.email) {
+      data.user = user?.email;
       console.log(data);
-       addBook(data)
-      .unwrap()
-      .then(() => {
-        Swal.fire('Added Book', 'Successfully added books', 'success');
-        dispatch(setNotification({ message: 'Successfully added books', type: 'success' }));
-        reset()
-      })
-      .catch((error:any) => {
-        console.log(error);
-        Swal.fire('Error', 'Failed to add book', 'error');
-        dispatch(setNotification({ message: 'Failed to add book', type: 'error' }));
-      });
-    }else{
+      addBook(data)
+        .unwrap()
+        .then(() => {
+          Swal.fire("Added Book", "Successfully added books", "success");
+          dispatch(
+            setNotification({
+              message: "Successfully added books",
+              type: "success",
+            })
+          );
+          reset();
+        })
+        .catch((error: any) => {
+          console.log(error);
+          Swal.fire("Error", "Failed to add book", "error");
+          dispatch(
+            setNotification({ message: "Failed to add book", type: "error" })
+          );
+        });
+    } else {
       Swal.fire({
-        icon: 'error',
-        title: 'You are not valid user',
-        text: 'Login Please',
-        footer: '<a href="">Why do I have this issue?</a>'
-      })
+        icon: "error",
+        title: "You are not valid user",
+        text: "Login Please",
+        footer: '<a href="">Why do I have this issue?</a>',
+      });
     }
-
   };
   return (
     <div className="min-h-screen">
-       <h3 className="text-center font-bold text-4xl  text-slate-400 my-2 font-serif ">
-         Add A Book
-        </h3>
+      <h3 className="text-center font-bold text-4xl  text-slate-400 my-2 font-serif ">
+        Add A Book
+      </h3>
       <form onSubmit={handleSubmit(onSubmit)} className="max-w-sm mx-auto">
         <div className="mb-4">
           <label
@@ -157,11 +158,9 @@ const AddBook = () => {
           )}
         </div>
 
-      
-
         <div className="flex items-center justify-between">
           <button
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            className="px-8 py-3 font-semibold border rounded text-black border-black w-full"
             type="submit"
           >
             Add Product

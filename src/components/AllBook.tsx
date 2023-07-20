@@ -114,7 +114,6 @@ const ALlBook = () => {
                   <p className="text-gray-600">
                     Publication Date: {publicationDate}
                   </p>
-                  {/* <Link to={`/bookDetails/${_id}`} className='bg-slate-300 p-2 m-1 shadow-lg font-serif my-4 rounded-md'>Details</Link> */}
                 </div>
               </Link>
               {user?.email && (
