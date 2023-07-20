@@ -148,13 +148,13 @@ const SignUp = () => {
 
           <h2 className="my-3 text-sm text-slate-600">
             Already have an account ?{" "}
-            <Link className="font-mono " to="/login">
-              Login in please
+            <Link className="font-mono text-red-700" to="/login">
+              Please LogIn
             </Link>
           </h2>
           <div className="flex items-center justify-between">
             <button
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+              className="px-8 py-3 font-semibold border rounded border-rose-700 w-full"
               type="submit"
             >
               Sign Up

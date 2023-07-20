@@ -48,7 +48,7 @@ const Login = () => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <div className="w-full max-w-md">
-        <h3 className="text-center font-bold text-4xl  text-slate-400 my-2 font-serif">
+        <h3 className="text-center font-bold text-4xl text-black my-2 font-serif">
           Log In
         </h3>
         <form
@@ -137,15 +137,15 @@ const Login = () => {
             </div>
             <h2 className="my-3 text-sm text-slate-600">
               Are you new user ?{" "}
-              <Link className="font-mono " to="/signup">
-                sign up in please
+              <Link className="font-mono text-orange-600" to="/signup">
+                Please SignUp
               </Link>
             </h2>
           </div>
 
           <div className="flex items-center justify-between">
             <button
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+              className="px-8 py-3 font-semibold border rounded border-orange-700 w-full"
               type="submit"
             >
               Log In

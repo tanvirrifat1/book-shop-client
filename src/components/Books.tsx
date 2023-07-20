@@ -1,6 +1,3 @@
-// import { useEffect, useState } from 'react';
-// import main_api from '../shared/mainAPi';
-// import { Link } from 'react-router-dom';
 import { Link } from "react-router-dom";
 import { useGetBookQuery } from "../redux/features/book/bookAPi";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
@@ -44,7 +41,11 @@ const Books = () => {
 
       {isLoading && (
         <div className="mt-1 text-xl font-bold font-serif text-center">
-          <h2>Loading .........</h2>
+          <div className="flex items-center justify-center space-x-2">
+            <div className="w-4 h-4 rounded-full animate-pulse dark:bg-violet-400"></div>
+            <div className="w-4 h-4 rounded-full animate-pulse dark:bg-violet-400"></div>
+            <div className="w-4 h-4 rounded-full animate-pulse dark:bg-violet-400"></div>
+          </div>
         </div>
       )}
       <div className="grid  lg:grid-cols-3 gap-7 sm:max-w-sm sm:mx-auto lg:max-w-full mt-5">
